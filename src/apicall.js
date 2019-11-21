@@ -1,12 +1,12 @@
 export class ApiCall{
-  constructor(type, userString, key){
-    this.key = key;
+  constructor(type, userString){
     this.type = type;
     this.userString = userString;
   }
   async getTastes(){
     try {
-      let response = `https://tastedive.com/api/similar?q=${this.userString}&type=${this.type}&k${this.key}&info=1&limit=5`;
+      console.log(`https://tastedive.com/api/similar?q=${this.userString}&type=${this.type}&k${process.env.API_KEY}&info=1&limit=5`);
+      let response = await fetch(`https://tastedive.com/api/similar?q=${this.userString}&type=${this.type}&k${process.env.API_KEY}&info=1&limit=5`);
       let jsonifiedResponse = await response.json();
       return jsonifiedResponse;
     } catch(error) {

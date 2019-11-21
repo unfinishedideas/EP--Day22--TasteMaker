@@ -7,10 +7,12 @@ import { ApiCall } from './apicall.js';
 $(document).ready(function(){
   $(".taste").submit(function(event){
     event.preventDefault();
+    let userInput = $("#userString").val();
+    let type = $("#typeForm").val();
+    console.log(type, userInput);
     (async () => {
       // API
-      let key = process.env.API_KEY;
-      let apiCall = new ApiCall(key);
+      let apiCall = new ApiCall(type, userInput);
       const response = await apiCall.getTastes();
       getElements(response);
     })();
