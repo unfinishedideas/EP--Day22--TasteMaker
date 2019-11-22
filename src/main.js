@@ -18,7 +18,7 @@ $(document).ready(function(){
     })();
 
     function getElements(response) {
-      console.log(response);
+      // console.log(response);
     }
   });
 });
